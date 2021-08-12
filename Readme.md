@@ -1,3 +1,38 @@
+# Just give me the commands to copy/paste:
+1. This preprocesses the pbf and starts the server:
+```
+mvn clean && ./td.sh datasource=bucharest.osm.pbf
+```
+
+2. After the server has started, load the traffic file:
+```
+curl -H "Content-Type: application/json" --data @traffic.json http://localhost:8989/datafeed
+```
+
+3. Check in your browser: http://localhost:8989
+
+Env:
+```
+-> % java -showversion
+openjdk version "1.8.0_292"
+OpenJDK Runtime Environment (AdoptOpenJDK)(build 1.8.0_292-b10)
+OpenJDK 64-Bit Server VM (AdoptOpenJDK)(build 25.292-b10, mixed mode)
+```
+
+```
+-> % mvn -v
+Apache Maven 3.8.1 (05c21c65bdfed0f71a2f2ada8b84da59348c4c5d)
+Maven home: /usr/local/Cellar/maven/3.8.1/libexec
+Java version: 1.8.0_292, vendor: AdoptOpenJDK, runtime: /Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home/jre
+Default locale: en_RO, platform encoding: UTF-8
+OS name: "mac os x", version: "10.16", arch: "x86_64", family: "mac"
+```
+
+```
+-> % echo $JAVA_HOME
+/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
+```
+
 # GraphHopper Traffic Data Integration
 
 This project makes traffic information integration into GraphHopper possible. In the example we are using real time traffic from Cologne and update every ~2 minutes, the UI will update too. The web UI is basically a slightly changed [GraphHopper Maps UI](https://graphhopper.com/maps/) with the traffic data in a separate HTML5 canvas layer:
