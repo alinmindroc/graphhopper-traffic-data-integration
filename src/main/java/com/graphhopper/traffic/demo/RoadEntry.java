@@ -1,6 +1,7 @@
 package com.graphhopper.traffic.demo;
 
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  *
@@ -17,7 +18,13 @@ public class RoadEntry {
     public RoadEntry() {
     }
 
-    public RoadEntry(String id, List<Point> points, double value, String valueType, String mode) {
+    public RoadEntry(
+            @JsonProperty("id") String id,
+            @JsonProperty("points") List<Point> points,
+            @JsonProperty("value") double value,
+            @JsonProperty("value_type") String valueType,
+            @JsonProperty("mode") String mode
+    ) {
         this.points = points;
         this.value = value;
         this.valueType = valueType;

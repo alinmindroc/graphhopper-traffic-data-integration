@@ -41,7 +41,7 @@ public class DataUpdater {
     private final OkHttpClient client;
     private final Logger logger = LoggerFactory.getLogger(getClass());
     private final Lock writeLock;
-    private final long seconds = 150;
+    private final long seconds = 15000;
     private RoadData currentRoads;
 
     public DataUpdater(Lock writeLock) {
